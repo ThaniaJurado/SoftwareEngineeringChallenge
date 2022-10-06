@@ -71,9 +71,9 @@ namespace SoftwareEngineeringChallenge
              * Also, the function could be reused in other projects. I would put it in the logic layer.  
              */
 
-
-            for (int i = 0;i<20;i++)
-                marbleList.AddRange(marbleList);
+            //Uncomment to make a test with a list of 10,485,760 marbles
+            //for (int i = 0;i<20;i++)
+            //    marbleList.AddRange(marbleList);
 
 
             Stopwatch stopwatch = new Stopwatch();
