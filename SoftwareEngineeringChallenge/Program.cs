@@ -58,21 +58,21 @@ namespace SoftwareEngineeringChallenge
 
             /*
               I cannot send an Anonymous Type Array to a function as a parameter and get it as a return value, 
-                so I decided to create and use a class named Marble 
+                so, I decided to create and use a class named Marble 
              */
 
             List<Marble> marbleList =
                 marbles.Select(m => new Marble() { id = m.id, color = m.color, name = m.name, weight = m.weight }).ToList();
 
             /*
-             * And then, thinking of recyling this code for either another little list of marbles or a huge list,
-             * I coded it to work on a function. This function, if needed, could be implemented in a REST API or un a WCF.
-             * For example, it would receive the list of marbles from the client side and return the sortered and filtered list.
-             * Also, the function could be reuse in other projects. I would put it in the logic layer.  
+             * And then, thinking of recycling this code for either another little list of marbles or a huge list,
+             * I coded it to work on a function. This function, if needed, could be implemented in a REST API or in a WCF.
+             * For example, it would receive the list of marbles from the client side and return the sorted and filtered list.
+             * Also, the function could be reused in other projects. I would put it in the logic layer.  
              */
 
 
-            for(int i = 0;i<20;i++)
+            for (int i = 0;i<20;i++)
                 marbleList.AddRange(marbleList);
 
 
@@ -98,18 +98,18 @@ namespace SoftwareEngineeringChallenge
 
         #region Methods
         /*
-         * Even though the statement mentions first the color sorting, I filtered first by weight, then by palinrome names
+         * Even though the statement mentions first the color sorting, I filtered first by weight, then by palindrome names
          * and after that I sorted the list by color. 
          * 
          * I chose this way after doing some time tests with a list of 10,485,760 (adding the list to itself 20 times):
          * 
          *      Sorting first and then filtering by weight and palindrome: 25.500 seconds
-         *      Filtering first by palindrome, then by weight and sorgin: 30.600 seconds
+         *      Filtering first by palindrome, then by weight and sorting: 30.600 seconds
          *      Filtering first by weight, then by palindrome and sorting: 22.300 seconds
          *      
          * For the filtering and sorting I used linq. 
          * Being a more complex logic, I decided to create a method just to determine whether the name is a palindrome or not
-         * Finally, I created a enum (user-defined value type) to sort the list by a special color order
+         * Finally, I created an enum (user-defined value type) to sort the list by a special color order
          */
         public static List<Marble> SortAndFilter(List<Marble> listOfMarbles)
         {
